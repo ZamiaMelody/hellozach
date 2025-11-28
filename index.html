@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello Zach!</title>
+    <meta name="description" content="A fun and interactive Hello Zach web experience.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <canvas id="particle-canvas"></canvas>
+
+    <main class="app-container">
+        <!-- Main Menu -->
+        <section id="menu-section" class="glass-card active-section">
+            <h1 class="title">Hello <span class="highlight">Zach!</span></h1>
+            <p class="subtitle">Choose your activity</p>
+            <div class="menu-grid">
+                <button class="menu-btn" data-target="fun-section">
+                    <span class="icon">🎉</span> Fun Button
+                </button>
+                <button class="menu-btn" data-target="calc-section">
+                    <span class="icon">🧮</span> Calculator
+                </button>
+                <button class="menu-btn" data-target="date-section">
+                    <span class="icon">📅</span> Today's Date
+                </button>
+                <button class="menu-btn" data-target="blackjack-section">
+                    <span class="icon">♠️</span> Blackjack
+                </button>
+            </div>
+        </section>
+
+        <!-- Fun Section -->
+        <section id="fun-section" class="glass-card hidden-section">
+            <button class="back-btn">← Back</button>
+            <h2 class="section-title">Have Fun!</h2>
+            <button id="fun-btn" class="interactive-btn">Click for Fun</button>
+        </section>
+
+        <!-- Calculator Section -->
+        <section id="calc-section" class="glass-card hidden-section">
+            <button class="back-btn">← Back</button>
+            <h2 class="section-title">Calculator</h2>
+            <div class="calculator">
+                <input type="text" id="calc-display" readonly>
+                <div class="calc-keys">
+                    <button class="calc-btn operator" data-action="clear">AC</button>
+                    <button class="calc-btn operator" data-action="delete">DEL</button>
+                    <button class="calc-btn operator" data-action="/">÷</button>
+                    <button class="calc-btn" data-num="7">7</button>
+                    <button class="calc-btn" data-num="8">8</button>
+                    <button class="calc-btn" data-num="9">9</button>
+                    <button class="calc-btn operator" data-action="*">×</button>
+                    <button class="calc-btn" data-num="4">4</button>
+                    <button class="calc-btn" data-num="5">5</button>
+                    <button class="calc-btn" data-num="6">6</button>
+                    <button class="calc-btn operator" data-action="-">-</button>
+                    <button class="calc-btn" data-num="1">1</button>
+                    <button class="calc-btn" data-num="2">2</button>
+                    <button class="calc-btn" data-num="3">3</button>
+                    <button class="calc-btn operator" data-action="+">+</button>
+                    <button class="calc-btn zero" data-num="0">0</button>
+                    <button class="calc-btn" data-num=".">.</button>
+                    <button class="calc-btn operator" data-action="=">=</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Date Section -->
+        <section id="date-section" class="glass-card hidden-section">
+            <button class="back-btn">← Back</button>
+            <h2 class="section-title">Today is</h2>
+            <div id="date-display" class="date-text"></div>
+            <div id="time-display" class="time-text"></div>
+        </section>
+
+        <!-- Blackjack Section -->
+        <section id="blackjack-section" class="glass-card hidden-section">
+            <button class="back-btn">← Back</button>
+            <h2 class="section-title">Blackjack</h2>
+            <div class="game-area">
+                <div class="hand-area">
+                    <h3>Dealer <span id="dealer-score" class="score"></span></h3>
+                    <div id="dealer-hand" class="cards-container"></div>
+                </div>
+                <div class="status-message" id="bj-message">Press New Game to Start</div>
+                <div class="hand-area">
+                    <h3>You <span id="player-score" class="score"></span></h3>
+                    <div id="player-hand" class="cards-container"></div>
+                </div>
+                <div class="game-info-bar">
+                    <div class="info-item">Balance: <span id="balance-display">$1000</span></div>
+                    <div class="info-item">Bet: <span id="bet-display">$0</span></div>
+                </div>
+                <div class="game-controls">
+                    <div id="betting-controls" class="betting-controls">
+                        <div class="chips-container">
+                            <button class="chip chip-5" data-value="5">5</button>
+                            <button class="chip chip-10" data-value="10">10</button>
+                            <button class="chip chip-25" data-value="25">25</button>
+                            <button class="chip chip-100" data-value="100">100</button>
+                        </div>
+                        <div class="bet-actions">
+                            <button id="btn-clear-bet" class="game-btn">Clear</button>
+                            <button id="btn-deal" class="game-btn primary" disabled>Deal</button>
+                        </div>
+                    </div>
+                    <div id="play-controls" class="play-controls hidden">
+                        <button id="bj-hit" class="game-btn">Hit</button>
+                        <button id="bj-stand" class="game-btn">Stand</button>
+                    </div>
+                    <button id="bj-new-game" class="game-btn hidden">Play Again</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+
+</html>
