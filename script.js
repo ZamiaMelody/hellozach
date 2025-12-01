@@ -496,3 +496,49 @@ newGameBtn.addEventListener('click', resetGame);
 
 // Initial Setup
 updateBettingDisplay();
+
+// Claire Roast Logic
+const claireBtn = document.getElementById('claire-btn');
+const claireInsult = document.getElementById('claire-insult');
+
+const insults = [
+    "You're so short you need a ladder to pick up a dime.",
+    "Can you hear me? Oh wait, you're deaf.",
+    "Nice glasses, can you see the haters yet?",
+    "Go touch grass! Oh wait, you don't know what that is.",
+    "1v1 me in real life? You'd lag out.",
+    "I'd explain it to you, but I don't have any crayons.",
+    "You're the reason they put instructions on shampoo bottles.",
+    "If you were any shorter, you'd be a pixel.",
+    "Your aim is so bad you missed the floor when you fell."
+];
+
+claireBtn.addEventListener('click', () => {
+    // Fire particles
+    for (let i = 0; i < 50; i++) {
+        const p = new Particle();
+        p.x = width / 2;
+        p.y = height / 2;
+        p.vx = (Math.random() - 0.5) * 20;
+        p.vy = (Math.random() - 0.5) * 20;
+        p.size = Math.random() * 5 + 2;
+        p.color = Math.random() > 0.5 ? '#ef4444' : '#f97316'; // Red/Orange fire
+        particles.push(p);
+    }
+
+    // Pick random insult
+    const insult = insults[Math.floor(Math.random() * insults.length)];
+
+    // Animate text
+    claireInsult.style.transform = "scale(0.5)";
+    claireInsult.style.opacity = "0";
+
+    setTimeout(() => {
+        claireInsult.innerText = insult;
+        claireInsult.style.transform = "scale(1.1)";
+        claireInsult.style.opacity = "1";
+        setTimeout(() => {
+            claireInsult.style.transform = "scale(1)";
+        }, 200);
+    }, 100);
+});
